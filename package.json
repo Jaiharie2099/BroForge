@@ -1,0 +1,50 @@
+{
+  "name": "broforce-workshop-mcp",
+  "version": "0.1.0",
+  "private": true,
+  "files": [
+    "src",
+    "web",
+    "skills",
+    "tools/map-binary-schema.json",
+    "mods",
+    "docs",
+    "dependencies.lock.json",
+    "library/levels/high-ground/The High Ground.bfc",
+    "library/levels/high-ground/The High Ground.bfg",
+    "library/bros/bronobi/1.0.1/catalog.json",
+    "library/bros/bronobi/1.0.1/UPSTREAM-LICENSE",
+    "scripts/*.py",
+    "scripts/*.sh",
+    "scripts/*.js",
+    "tools/NativeCampaignTool/*.cs",
+    "tools/NativeCampaignTool/*.csproj",
+    "tools/NativeCampaignTool/README.md",
+    "templates",
+    "tests/*.js",
+    "tests/*.py",
+    "tools/*.py"
+  ],
+  "type": "module",
+  "description": "Local Linux Broforce authoring MCP, skills, and previews",
+  "engines": {
+    "node": ">=22"
+  },
+  "bin": {
+    "broforce-workshop": "src/cli.js"
+  },
+  "scripts": {
+    "setup": "node src/cli.js setup",
+    "start": "node src/cli.js serve",
+    "doctor": "node src/cli.js doctor",
+    "preview": "node src/cli.js preview",
+    "test": "node --test tests/mcp.test.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/server": "2.4.0",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@modelcontextprotocol/client": "2.4.0"
+  }
+}

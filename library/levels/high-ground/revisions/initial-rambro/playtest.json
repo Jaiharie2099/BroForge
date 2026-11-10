@@ -1,0 +1,36 @@
+{
+  "date": "2026-11-10",
+  "artifact": "The High Ground.bfc",
+  "sha256": "fb45dbf854a1bb800ef92aafaa52f1bd08ce6466a6ba5458a4fa726b40fe8a9f",
+  "game_assembly_sha256": "d518444c45ba73f834bfbd163973f3c0fdbb935522144d9b95e6db74029a6b86",
+  "static_validation": {
+    "name": "The High Ground",
+    "size": [
+      64,
+      48
+    ],
+    "objects": 22,
+    "max_drop_tiles": 6,
+    "complete_binary_consumed": true,
+    "object_placement": "clear",
+    "runtime": "separate verification required"
+  },
+  "installed_copy_matches": true,
+  "runtime": {
+    "editor_load": "passed",
+    "spawn": "Rambro on the upper steel ledge",
+    "descent": "traversed with keyboard controls; enemies and burning torches rendered",
+    "rescue_cage": "rescued; lives increased from 1 to 2",
+    "portal": "native Hell portal appeared on entering the final terrace",
+    "completion": "moving right from the lower checkpoint into the completion region ended play mode and returned to the editor",
+    "completion_evidence_scope": "runtime transition corroborated by the LevelEndSuccess area action; no separate victory banner captured",
+    "log_check": "no Exception or Error matches in the inspected Player.log after testing",
+    "scope": "single local player, installed Linux build only; not published"
+  },
+  "screenshots": {
+    "playtest-start.png": "play mode at the starting ledge",
+    "playtest-descent.png": "play mode on the descending terraces",
+    "playtest-portal.png": "alive at the lower checkpoint with the native portal present",
+    "playtest-finish.png": "editor view immediately after entering the completion region"
+  }
+}

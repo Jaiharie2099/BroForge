@@ -1,0 +1,24 @@
+__pycache__/
+*.pyc
+node_modules/
+projects/
+# Local proprietary reference data extracted from the installed game.
+investigation/sample-levels/
+investigation/*theme.json
+investigation/*.png
+# Downloaded upstream checkout is pinned in the imported character catalog.
+references/CustomBros/
+references/Bro-Maker/
+references/RocketLib/
+references/Mods-Broforce/
+references/unity-mod-manager/
+.toolchain/
+runtime/
+dependencies/
+**/bin/
+**/obj/
+
+# Downloaded bro releases and local reverse-engineering records.
+library/bros/*/*/package/
+library/bros/*/*/*.zip
+investigation/

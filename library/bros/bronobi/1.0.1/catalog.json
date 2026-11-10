@@ -1,0 +1,61 @@
+{
+  "id": "bronobi",
+  "version": "1.0.1",
+  "author": "Gorzontrok",
+  "kind": "bro",
+  "source": {
+    "url": "https://github.com/Gorzontrok/CustomBros",
+    "commit": "7c61c806a22e8637720558cc25d910a925ebb8e4",
+    "path": "Bronobi/Bronobi"
+  },
+  "archive": {
+    "file": "Gorzontrok-Bronobi-1.0.1.zip",
+    "sha256": "b1e00d567a3690e52173fd1c7bc000ce611c6ffc04698a792c4de74e48b3feef"
+  },
+  "dependencies": [
+    "RocketLib-RocketLib-2.4.3",
+    "BroMaker-BroMaker-2.6.2",
+    "UMM-UMM-1.1.0"
+  ],
+  "validation": {
+    "archive_crc": "passed",
+    "declared_assemblies_and_configs": "present",
+    "primary_sprite_references": "present",
+    "runtime": "not-tested",
+    "build_from_source": "not-tested",
+    "installed": false
+  },
+  "files": {
+    "CHANGELOG.md": "c3c36ebbc57c29468023668c4a75cf3405e9d5b47e5423f705d621ffc65627b8",
+    "README.md": "6e33ac6515ec0cd5010ddcb1bb2f5a2de630e1fd9cfa33bf9daf49ea1522016c",
+    "UMM/BroMaker_Storage/Bronobi/Bronobi.dll": "568953cbdd76686c51842795a8a2e5f29bbdfad4d995e2dd7304f4445241d906",
+    "UMM/BroMaker_Storage/Bronobi/Bronobi.json": "117d7961f82bd03dce0524cba8acd21ce4484b28cc3533fc672f052be923d34f",
+    "UMM/BroMaker_Storage/Bronobi/Bronobi.wav": "39a8f99f1265d560498a55a15f732ba096309b246525820f7acc5a2cd48425e1",
+    "UMM/BroMaker_Storage/Bronobi/BronobiForceWave.png": "ac0fdf5df923f4b316f984f6eb0c64aed40d92fbc63e10bcd66339736848cd62",
+    "UMM/BroMaker_Storage/Bronobi/Bronobi_Cutscene.png": "c28bdd13c054481883063879c5048741f1a0ae0e88a5da718738a7c326a66d75",
+    "UMM/BroMaker_Storage/Bronobi/Bronobi_Ghost_anim.png": "8ff1561b02812c5db01e4c7e710be233e5fa6052b7f91e4793e7d3fcd525e56a",
+    "UMM/BroMaker_Storage/Bronobi/Bronobi_ammo.png": "4e7c5dff7fc01c94da5642cc724cea883c1305246d3267e3427dfe9949f6ccae",
+    "UMM/BroMaker_Storage/Bronobi/Bronobi_anim.png": "da0692fba2b8f071e7c8dc2e45625c64c249f7a45fcb2a57a51de7841d96e36a",
+    "UMM/BroMaker_Storage/Bronobi/Bronobi_gun_anim.png": "8b55ece06135a7eecac7300120c6689b98eff43268d103ddbddf485df4ce9060",
+    "UMM/BroMaker_Storage/Bronobi/Bronobi_gun_grab_anim.png": "1de99f042f64ccc87103cb87a45e736de5223d6fd9989fbe7547519fbe426421",
+    "UMM/BroMaker_Storage/Bronobi/Credits.txt": "ccb8e087b6efd6f9fbc9ffa14cf3ded89b79a13813bf4a16b14b89613a016166",
+    "UMM/BroMaker_Storage/Bronobi/avatar_Bronobi.png": "b5c53bcc744737f7a2cbb82026d876df3913957891cd994e7f8af628a55e6981",
+    "UMM/BroMaker_Storage/Bronobi/blind_stars_white1.png": "07bc5d36bd3e1d8d06ff41385bc14396708c906b1ca492ee2c01ac462eadef5a",
+    "UMM/BroMaker_Storage/Bronobi/blind_stars_white2.png": "18883ac07b1669286ab1c1f5e1a85fc2b0f67b6879c0d598fafc9f07ebf683ff",
+    "UMM/BroMaker_Storage/Bronobi/blind_stars_white3.png": "a4485022d991ec70a6f4aeefdcb9d12bd5d3152448c7b453e629de5955e2e835",
+    "UMM/BroMaker_Storage/Bronobi/force_1.wav": "74d712395f2abc487c91d305b7b53b6da300d99808311a462a1825f1cd461369",
+    "UMM/BroMaker_Storage/Bronobi/force_2.wav": "88d595691f57817e06959088bd06916018d995d713220b9f375747cd69198ae5",
+    "UMM/BroMaker_Storage/Bronobi/force_3.wav": "7350cb1a380be74abbad9cd0c9b229344b8aeeea45050a74828456c0da94c127",
+    "UMM/BroMaker_Storage/Bronobi/force_push.wav": "18aebecb52f45ad7888936c84453512fbb5da0ad456e1e781d64cab45d1d2908",
+    "UMM/BroMaker_Storage/Bronobi/gz.bronobi.mod.json": "9412880807a71447785940716fd89dadebbe40c266138fe7d965583fed64a4a6",
+    "UMM/BroMaker_Storage/Bronobi/saber_hit_0t.wav": "505542a3169cd5c2158c417ed92593976bcb58b1f39f2a48e087006805515d43",
+    "UMM/BroMaker_Storage/Bronobi/saber_hit_1t.wav": "74ff7548ea99df2c3479fe903d5fe487296188f8649f37108d4400eda95eb646",
+    "UMM/BroMaker_Storage/Bronobi/saber_hit_2t.wav": "114637a57aa16ca9e2aba97bb21d029d2cd6fa2d744e244d4c509dccc7a40913",
+    "UMM/BroMaker_Storage/Bronobi/saber_hit_3t.wav": "3bf8266c8882955cff1ddbfcacf91e24f87bc50942e3964fbeacfae894d8e689",
+    "UMM/BroMaker_Storage/Bronobi/saber_hit_bullet.wav": "510dbd3871eaa297d2913a395bb01e8af060c07508227f14d5cc0224eb44681d",
+    "UMM/BroMaker_Storage/Bronobi/saber_swing_1.wav": "f3099ecd71526c260504b2084d2465e2bcea7b673be803e545fe5c07b8265b19",
+    "UMM/BroMaker_Storage/Bronobi/saber_swing_2.wav": "84d08831e99addd3f4c4d10f2c14a9794aca4ab9c265eace496da2faed2bfac7",
+    "icon.png": "323647081ed21d7cbd5445a1cbec83a8d042c169bc5b534ac15d8eeac301e8f5",
+    "manifest.json": "c59fa424885c936686e6815f8edf30ec8e5155b3c47398a52665a57475624b86"
+  }
+}

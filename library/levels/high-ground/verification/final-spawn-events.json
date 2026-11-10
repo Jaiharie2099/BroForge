@@ -1,0 +1,66 @@
+[
+  {
+    "utc": "2026-11-10T15:32:44.6438770Z",
+    "kind": "map_awake",
+    "data": {
+      "scene": "Test Evan2"
+    }
+  },
+  {
+    "utc": "2026-11-10T15:32:44.7382600Z",
+    "kind": "spawn_policy",
+    "data": {
+      "player": 0,
+      "initial": true,
+      "requested": "Bronobi"
+    }
+  },
+  {
+    "utc": "2026-11-10T15:32:44.7681680Z",
+    "kind": "spawn_result",
+    "data": {
+      "utc": "2026-11-10T15:32:44.7681280Z",
+      "player": 0,
+      "character": "BronobiMod.Bronobi",
+      "hero": "Blade"
+    }
+  },
+  {
+    "utc": "2026-11-10T15:33:36.1645710Z",
+    "kind": "spawn_policy",
+    "data": {
+      "player": 0,
+      "initial": false,
+      "requested": "vanilla random"
+    }
+  },
+  {
+    "utc": "2026-11-10T15:33:36.1661330Z",
+    "kind": "spawn_result",
+    "data": {
+      "utc": "2026-11-10T15:33:36.1661210Z",
+      "player": 0,
+      "character": "Rambro",
+      "hero": "Rambro"
+    }
+  },
+  {
+    "utc": "2026-11-10T15:33:40.1815830Z",
+    "kind": "spawn_policy",
+    "data": {
+      "player": 0,
+      "initial": false,
+      "requested": "vanilla random"
+    }
+  },
+  {
+    "utc": "2026-11-10T15:33:40.1858830Z",
+    "kind": "spawn_result",
+    "data": {
+      "utc": "2026-11-10T15:33:40.1858590Z",
+      "player": 0,
+      "character": "Rambro",
+      "hero": "Rambro"
+    }
+  }
+]

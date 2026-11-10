@@ -1,0 +1,236 @@
+{
+  "name": "The High Ground",
+  "environment": "Hell",
+  "expected_duration_seconds": "15-30",
+  "settings": {
+    "suppressAnnouncer": false,
+    "cameraSpeed": 32.0,
+    "regualrMookSpawnProbability": 1.0,
+    "bigMookSpawnProbability": 0,
+    "suicideMookSpawnProbability": 0,
+    "riotShieldMookSpawnProbability": 0,
+    "oilBarrelSpawnProbability": 0,
+    "propaneTankSpawnProbability": 0,
+    "acidBarrelSpawnProbability": 0,
+    "spikeTrapSpawnProbability": 0,
+    "mineFieldSpawnProbability": 0,
+    "coconutProbability": 0,
+    "spawnAmmoCrates": true,
+    "canHighFiveSlowDownThisLevel": true,
+    "ammoCrateFrequencyMultiplier": 1.0,
+    "ammoCrateRemoteCarProbability": 0,
+    "vignettingEffect": false,
+    "bloomEffect": false,
+    "bloomEffectM": 1.0,
+    "bloomThresholdM": 1.0,
+    "forceHardMode": false,
+    "alienExplosiveBlockSpawnProbability": 0,
+    "useStandardDeathmatchCollapse": false,
+    "collapseInterval": 3.0,
+    "restartOnDeathInHardcore": false,
+    "waitForAllPlayersInOnline": false,
+    "constantFireworks": false,
+    "brosStartWithFullSpecials": true,
+    "alwaysShowBubblesInMultiplayer": false,
+    "onlyTriggersCanWinLevel": false,
+    "themeScene": "",
+    "levelDescription": "THE HIGH GROUND - A short descent into Hell",
+    "heroSpawnMode": 4,
+    "cameraFollowMode": 0,
+    "theme": 4,
+    "forcedBro": 1000,
+    "musicType": 8,
+    "weatherType": 4,
+    "ambience": 8,
+    "width": 64,
+    "height": 48
+  },
+  "terraces": [
+    [
+      0,
+      13,
+      35
+    ],
+    [
+      14,
+      24,
+      29
+    ],
+    [
+      25,
+      35,
+      23
+    ],
+    [
+      36,
+      46,
+      17
+    ],
+    [
+      47,
+      63,
+      11
+    ]
+  ],
+  "doodads": [
+    {
+      "x": 4,
+      "y": 36,
+      "type": 35,
+      "variation": 1
+    },
+    {
+      "x": 6,
+      "y": 36,
+      "type": 35,
+      "variation": 1
+    },
+    {
+      "x": 8,
+      "y": 36,
+      "type": 35,
+      "variation": 1
+    },
+    {
+      "x": 10,
+      "y": 36,
+      "type": 35,
+      "variation": 1
+    },
+    {
+      "x": 21,
+      "y": 30,
+      "type": 74,
+      "variation": 0
+    },
+    {
+      "x": 32,
+      "y": 24,
+      "type": 74,
+      "variation": 1
+    },
+    {
+      "x": 43,
+      "y": 18,
+      "type": 74,
+      "variation": 1
+    },
+    {
+      "x": 52,
+      "y": 12,
+      "type": 74,
+      "variation": 0
+    },
+    {
+      "x": 28,
+      "y": 24,
+      "type": 3,
+      "variation": 0
+    },
+    {
+      "x": 30,
+      "y": 25,
+      "type": 1,
+      "variation": 0
+    },
+    {
+      "x": 58,
+      "y": 12,
+      "type": 4,
+      "variation": 0
+    },
+    {
+      "x": 57,
+      "y": 12,
+      "type": 3,
+      "variation": 0
+    },
+    {
+      "x": 12,
+      "y": 36,
+      "type": 80,
+      "variation": 14
+    },
+    {
+      "x": 24,
+      "y": 30,
+      "type": 80,
+      "variation": 14
+    },
+    {
+      "x": 35,
+      "y": 24,
+      "type": 80,
+      "variation": 14
+    },
+    {
+      "x": 46,
+      "y": 18,
+      "type": 80,
+      "variation": 14
+    },
+    {
+      "x": 50,
+      "y": 12,
+      "type": 80,
+      "variation": 14
+    },
+    {
+      "x": 34,
+      "y": 24,
+      "type": 80,
+      "variation": 24
+    },
+    {
+      "x": 45,
+      "y": 18,
+      "type": 80,
+      "variation": 24
+    },
+    {
+      "x": 51,
+      "y": 12,
+      "type": 80,
+      "variation": 24
+    },
+    {
+      "x": 61,
+      "y": 12,
+      "type": 80,
+      "variation": 24
+    },
+    {
+      "x": 49,
+      "y": 12,
+      "type": 80,
+      "variation": 26
+    }
+  ],
+  "broPolicy": {
+    "initial": "Bronobi",
+    "rescue": "random vanilla bro",
+    "implementation": "external BroMaker integration; campaign does not globally force a hero"
+  },
+  "intent": "High industrial ledge descending into a burning demonic ravine; brief test.",
+  "exit": {
+    "trigger_area": [
+      48,
+      10,
+      63,
+      18
+    ],
+    "action": "CallHellPortal",
+    "position": [
+      61,
+      12
+    ],
+    "completion_area": [
+      59,
+      11,
+      63,
+      16
+    ],
+    "completion_action": "LevelEndSuccess"
+  },
+  "status": "generated; see playtest.json for observed verification"
+}

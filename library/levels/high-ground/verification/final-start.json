@@ -1,0 +1,47 @@
+{
+  "scene": "Test Evan2",
+  "timeScale": 1.0,
+  "editing": false,
+  "bronobiLoaded": true,
+  "cages": [
+    {
+      "x": 480.0,
+      "y": 400.0,
+      "colliders": [
+        {
+          "name": "CageBig(Clone)",
+          "bottom": 376.0,
+          "top": 408.0
+        },
+        {
+          "name": "Hobro",
+          "bottom": 378.0,
+          "top": 397.0
+        },
+        {
+          "name": "WallBottom",
+          "bottom": 376.0,
+          "top": 378.0
+        }
+      ]
+    }
+  ],
+  "map": "THE HIGH GROUND - A short descent into Hell",
+  "players": [
+    {
+      "player": 0,
+      "character": "BronobiMod.Bronobi",
+      "hero": "Blade",
+      "x": 141.254761,
+      "y": 568.0
+    }
+  ],
+  "spawns": [
+    {
+      "utc": "2026-11-10T15:32:44.7681280Z",
+      "player": 0,
+      "character": "BronobiMod.Bronobi",
+      "hero": "Blade"
+    }
+  ]
+}

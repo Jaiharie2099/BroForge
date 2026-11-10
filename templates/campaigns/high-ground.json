@@ -1,0 +1,450 @@
+{
+  "name": "The High Ground",
+  "levels": [
+    {
+      "width": 64,
+      "height": 48,
+      "settings": {
+        "suppressAnnouncer": false,
+        "cameraSpeed": 32.0,
+        "regualrMookSpawnProbability": 1.0,
+        "bigMookSpawnProbability": 0,
+        "suicideMookSpawnProbability": 0,
+        "riotShieldMookSpawnProbability": 0,
+        "oilBarrelSpawnProbability": 0,
+        "propaneTankSpawnProbability": 0,
+        "acidBarrelSpawnProbability": 0,
+        "spikeTrapSpawnProbability": 0,
+        "mineFieldSpawnProbability": 0,
+        "coconutProbability": 0,
+        "spawnAmmoCrates": true,
+        "canHighFiveSlowDownThisLevel": true,
+        "ammoCrateFrequencyMultiplier": 1.0,
+        "ammoCrateRemoteCarProbability": 0,
+        "vignettingEffect": false,
+        "bloomEffect": false,
+        "bloomEffectM": 1.0,
+        "bloomThresholdM": 1.0,
+        "forceHardMode": false,
+        "alienExplosiveBlockSpawnProbability": 0,
+        "useStandardDeathmatchCollapse": false,
+        "collapseInterval": 3.0,
+        "restartOnDeathInHardcore": false,
+        "waitForAllPlayersInOnline": false,
+        "constantFireworks": false,
+        "brosStartWithFullSpecials": true,
+        "alwaysShowBubblesInMultiplayer": false,
+        "onlyTriggersCanWinLevel": false,
+        "themeScene": "",
+        "levelDescription": "THE HIGH GROUND - A short descent into Hell",
+        "heroSpawnMode": 4,
+        "cameraFollowMode": 0,
+        "theme": 4,
+        "forcedBro": 1000,
+        "musicType": 8,
+        "weatherType": 4,
+        "ambience": 8,
+        "width": 64,
+        "height": 48
+      },
+      "terrain": [
+        {
+          "layer": "foreground",
+          "bounds": [
+            0,
+            0,
+            13,
+            35
+          ],
+          "type": "HellRock"
+        },
+        {
+          "layer": "foreground",
+          "bounds": [
+            0,
+            33,
+            13,
+            35
+          ],
+          "type": "HellEarth"
+        },
+        {
+          "layer": "background",
+          "bounds": [
+            0,
+            0,
+            13,
+            33
+          ],
+          "type": "BackgroundEarth"
+        },
+        {
+          "layer": "foreground",
+          "bounds": [
+            14,
+            0,
+            24,
+            29
+          ],
+          "type": "HellRock"
+        },
+        {
+          "layer": "foreground",
+          "bounds": [
+            14,
+            27,
+            24,
+            29
+          ],
+          "type": "HellEarth"
+        },
+        {
+          "layer": "background",
+          "bounds": [
+            14,
+            0,
+            24,
+            27
+          ],
+          "type": "BackgroundEarth"
+        },
+        {
+          "layer": "foreground",
+          "bounds": [
+            25,
+            0,
+            35,
+            23
+          ],
+          "type": "HellRock"
+        },
+        {
+          "layer": "foreground",
+          "bounds": [
+            25,
+            21,
+            35,
+            23
+          ],
+          "type": "HellEarth"
+        },
+        {
+          "layer": "background",
+          "bounds": [
+            25,
+            0,
+            35,
+            21
+          ],
+          "type": "BackgroundEarth"
+        },
+        {
+          "layer": "foreground",
+          "bounds": [
+            36,
+            0,
+            46,
+            17
+          ],
+          "type": "HellRock"
+        },
+        {
+          "layer": "foreground",
+          "bounds": [
+            36,
+            15,
+            46,
+            17
+          ],
+          "type": "HellEarth"
+        },
+        {
+          "layer": "background",
+          "bounds": [
+            36,
+            0,
+            46,
+            15
+          ],
+          "type": "BackgroundEarth"
+        },
+        {
+          "layer": "foreground",
+          "bounds": [
+            47,
+            0,
+            63,
+            11
+          ],
+          "type": "HellRock"
+        },
+        {
+          "layer": "foreground",
+          "bounds": [
+            47,
+            9,
+            63,
+            11
+          ],
+          "type": "HellEarth"
+        },
+        {
+          "layer": "background",
+          "bounds": [
+            47,
+            0,
+            63,
+            9
+          ],
+          "type": "BackgroundEarth"
+        },
+        {
+          "layer": "foreground",
+          "bounds": [
+            3,
+            35,
+            9,
+            35
+          ],
+          "type": "Steel"
+        }
+      ],
+      "doodads": [
+        {
+          "x": 4,
+          "y": 36,
+          "type": 35,
+          "variation": 1
+        },
+        {
+          "x": 6,
+          "y": 36,
+          "type": 35,
+          "variation": 1
+        },
+        {
+          "x": 8,
+          "y": 36,
+          "type": 35,
+          "variation": 1
+        },
+        {
+          "x": 10,
+          "y": 36,
+          "type": 35,
+          "variation": 1
+        },
+        {
+          "x": 21,
+          "y": 30,
+          "type": 74,
+          "variation": 0
+        },
+        {
+          "x": 32,
+          "y": 24,
+          "type": 74,
+          "variation": 1
+        },
+        {
+          "x": 43,
+          "y": 18,
+          "type": 74,
+          "variation": 1
+        },
+        {
+          "x": 52,
+          "y": 12,
+          "type": 74,
+          "variation": 0
+        },
+        {
+          "x": 28,
+          "y": 24,
+          "type": 3,
+          "variation": 0
+        },
+        {
+          "x": 30,
+          "y": 25,
+          "type": 1,
+          "variation": 0
+        },
+        {
+          "x": 58,
+          "y": 12,
+          "type": 4,
+          "variation": 0
+        },
+        {
+          "x": 57,
+          "y": 12,
+          "type": 3,
+          "variation": 0
+        },
+        {
+          "x": 12,
+          "y": 36,
+          "type": 80,
+          "variation": 14
+        },
+        {
+          "x": 24,
+          "y": 30,
+          "type": 80,
+          "variation": 14
+        },
+        {
+          "x": 35,
+          "y": 24,
+          "type": 80,
+          "variation": 14
+        },
+        {
+          "x": 46,
+          "y": 18,
+          "type": 80,
+          "variation": 14
+        },
+        {
+          "x": 50,
+          "y": 12,
+          "type": 80,
+          "variation": 14
+        },
+        {
+          "x": 34,
+          "y": 24,
+          "type": 80,
+          "variation": 24
+        },
+        {
+          "x": 45,
+          "y": 18,
+          "type": 80,
+          "variation": 24
+        },
+        {
+          "x": 51,
+          "y": 12,
+          "type": 80,
+          "variation": 24
+        },
+        {
+          "x": 61,
+          "y": 12,
+          "type": 80,
+          "variation": 24
+        },
+        {
+          "x": 49,
+          "y": 12,
+          "type": 80,
+          "variation": 26
+        }
+      ],
+      "triggers": [
+        {
+          "bottomLeft": [
+            48,
+            10
+          ],
+          "upperRight": [
+            63,
+            18
+          ],
+          "fields": {
+            "type": "Area",
+            "startEnabled": true,
+            "evaluateAgainstValue": 1,
+            "evaluateOnSmallerThan": false,
+            "isTerrainEmpty": true,
+            "useDefaultBrotality": false,
+            "useCustomBrotality": false,
+            "minBrotalityLevel": 0,
+            "enemyDeathFrequency": 0,
+            "onlyTriggerOnce": true,
+            "name": "Open the exit portal",
+            "variableName": "",
+            "tag": null
+          },
+          "actions": [
+            {
+              "pos": [
+                61,
+                12
+              ],
+              "fields": {
+                "type": "LevelEvent",
+                "timeOffset": 0,
+                "onlyOnHardMode": false,
+                "name": "Open the exit portal",
+                "cutsceneNumber": 0,
+                "value1": 0,
+                "value2": 0,
+                "integerValue1": 0,
+                "fadeInMusic": false,
+                "transitionInstantly": true,
+                "targetHelicopter": false,
+                "displayDecimals": false,
+                "triggerName": null,
+                "levelActionType": "CallHellPortal",
+                "cutscene": 0
+              }
+            }
+          ]
+        },
+        {
+          "bottomLeft": [
+            59,
+            11
+          ],
+          "upperRight": [
+            63,
+            16
+          ],
+          "fields": {
+            "type": "Area",
+            "startEnabled": true,
+            "evaluateAgainstValue": 1,
+            "evaluateOnSmallerThan": false,
+            "isTerrainEmpty": true,
+            "useDefaultBrotality": false,
+            "useCustomBrotality": false,
+            "minBrotalityLevel": 0,
+            "enemyDeathFrequency": 0,
+            "onlyTriggerOnce": true,
+            "name": "Finish test level",
+            "variableName": "",
+            "tag": null
+          },
+          "actions": [
+            {
+              "pos": [
+                61,
+                12
+              ],
+              "fields": {
+                "type": "LevelEvent",
+                "timeOffset": 0,
+                "onlyOnHardMode": false,
+                "name": "Finish test level",
+                "cutsceneNumber": 0,
+                "value1": 0,
+                "value2": 0,
+                "integerValue1": 0,
+                "fadeInMusic": false,
+                "transitionInstantly": true,
+                "targetHelicopter": false,
+                "displayDecimals": false,
+                "triggerName": null,
+                "levelActionType": "LevelEndSuccess",
+                "cutscene": 0
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

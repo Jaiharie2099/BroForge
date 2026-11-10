@@ -1,0 +1,1 @@
+{"Id":"BroforceWorkshop","DisplayName":"Broforce Workshop Bridge","Author":"Local workshop","Version":"0.1.0","Requirements":["BroMaker","RocketLib"],"LoadAfter":["BroMaker","RocketLib"],"AssemblyName":"WorkshopBridge.dll","EntryMethod":"BroforceWorkshop.Main.Load"}

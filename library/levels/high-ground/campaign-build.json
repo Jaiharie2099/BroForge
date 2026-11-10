@@ -1,0 +1,11 @@
+{
+  "output": "${WORKSHOP_ROOT}/library/levels/high-ground/The High Ground.bfg",
+  "bytes": 9755,
+  "sha256": "c3d645a2b113632bba3edfed80653c3c6e6a6b0ba910231956a7427ee8ddd326",
+  "gameAssemblySha256": "d518444c45ba73f834bfbd163973f3c0fdbb935522144d9b95e6db74029a6b86",
+  "gameMvid": "26ca9ec0-2f28-4fc8-8117-d9a0eb8804eb",
+  "levels": 1,
+  "nativeApi": "Campaign.Deserialize -\u003E FileIO.SerializeCampaign(true,true)",
+  "validation": "native decrypt, checksum, decompression, and XML deserialization passed",
+  "runtime": "not tested in Unity; no engine started"
+}

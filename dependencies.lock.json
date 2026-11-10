@@ -1,0 +1,38 @@
+[
+  {
+    "name": "UMM",
+    "version": "1.1.0",
+    "repository": "https://github.com/alexneargarder/unity-mod-manager.git",
+    "commit": "0a199c32ae1ed3cff53c48870df568ae6801cc8c",
+    "checkout": "references/unity-mod-manager",
+    "archive": "Releases/UMM-UMM-1.1.0.zip",
+    "sha256": "5e3e8e9fc6173f974200551286fc4980294ea68ab80a24189c215e9eb7f24bda"
+  },
+  {
+    "name": "RocketLib",
+    "version": "2.4.3",
+    "repository": "https://github.com/Gorzontrok/RocketLib.git",
+    "commit": "f3285ea33c6d36bd33ff6943dfeba6debce6a778",
+    "checkout": "references/RocketLib",
+    "archive": "Release/RocketLib-RocketLib-2.4.3.zip",
+    "sha256": "371fcfaf7f582802fa74c9b0697bed8ee512c9a25ce4d8b37e5d01b58d572305"
+  },
+  {
+    "name": "BroMaker",
+    "version": "2.6.2",
+    "repository": "https://github.com/Gorzontrok/Bro-Maker.git",
+    "commit": "9295dc99c97089b9ca6b0a90e85616c20c72cf6c",
+    "checkout": "references/Bro-Maker",
+    "archive": "Release/BroMaker-BroMaker-2.6.2.zip",
+    "sha256": "c6f12e19f579e29d5072a5076143f096a854c908cb6d603e7a6bdef1452ac803"
+  },
+  {
+    "name": "Bronobi",
+    "version": "1.0.1",
+    "repository": "https://github.com/Gorzontrok/CustomBros.git",
+    "commit": "7c61c806a22e8637720558cc25d910a925ebb8e4",
+    "checkout": "references/CustomBros",
+    "archive": "Release/Bronobi/Gorzontrok-Bronobi-1.0.1.zip",
+    "sha256": "b1e00d567a3690e52173fd1c7bc000ce611c6ffc04698a792c4de74e48b3feef"
+  }
+]

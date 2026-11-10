@@ -1,0 +1,45 @@
+{
+  "date": "2026-11-10",
+  "artifacts": {
+    "The High Ground.bfc": "19bf67583007509a91c487930fbbac7239e020fd20abcfaea59ac035deb8ad1d",
+    "The High Ground.bfg": "c3d645a2b113632bba3edfed80653c3c6e6a6b0ba910231956a7427ee8ddd326"
+  },
+  "game_assembly_sha256": "d518444c45ba73f834bfbd163973f3c0fdbb935522144d9b95e6db74029a6b86",
+  "runtime": {
+    "status": "verified through normal custom campaign victory",
+    "path": "native CustomCampaignMenu launch sequence via local WorkshopBridge",
+    "first_character": "BronobiMod.Bronobi (hero preset Blade)",
+    "rescue_policy": "global forcing removed; BroMaker replacement disabled after initial spawn, native vanilla selection retained",
+    "rescued_character_observed": "Rambro in earlier runs; BroDredd in final Snap Steam smoke test",
+    "cage_bottom_world_y": 376.0,
+    "support_surface_world_y": 376.0,
+    "cage_sunk_into_ground": false,
+    "evidence": [
+      "verification/before-rescue.json",
+      "verification/after-rescue.json",
+      "verification/spawn-events.json",
+      "bronobi-at-fixed-cage.png",
+      "verification/final-start.json",
+      "verification/final-rescue.json",
+      "verification/final-end.json",
+      "campaign-completed.png",
+      "campaign-victory.png",
+      "verification/final-spawn-events.json",
+      "verification/live-smoke-test.json"
+    ],
+    "controls": "C# Player.GetInput patch through file IPC; no mouse or keyboard level authoring",
+    "scope": "single local player on the inspected Linux build",
+    "completion": "AREA LIBERATED banner followed by VictoryCustomCampaign scene",
+    "automated_smoke_test": "passed: native load, Bronobi initial spawn, flush cage, vanilla rescue, VictoryCustomCampaign",
+    "launch_environment": "Snap Steam environment via scripts/run_modded.sh and ELF-header-based Doorstop launcher"
+  },
+  "dependencies": {
+    "UMM": "1.1.0",
+    "RocketLib": "2.4.3",
+    "BroMaker": "2.6.2",
+    "Bronobi": "1.0.1"
+  },
+  "previous_playtest": "revisions/initial-rambro/playtest.json",
+  "bridge_source_sha256": "dce9e9d4a81708a767785912bf01ccb212a6c84df33d8ef9cc3ba1de560ee4b3",
+  "bridge_binary_sha256": "51143cfcf38ea16c6fab140c0e2c2d83997aedd82faaedf115aeae1405f15828"
+}
