@@ -12,8 +12,6 @@
     "dependencies.lock.json",
     "library/levels/high-ground/The High Ground.bfc",
     "library/levels/high-ground/The High Ground.bfg",
-    "library/bros/bronobi/1.0.1/catalog.json",
-    "library/bros/bronobi/1.0.1/UPSTREAM-LICENSE",
     "scripts/*.py",
     "scripts/*.sh",
     "scripts/*.js",

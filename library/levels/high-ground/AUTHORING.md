@@ -46,10 +46,10 @@ The `.bfc` remains editable in the level editor. The `.bfg` is intended for the 
 ## Corrected character and cage behavior
 
 - Global hero forcing is disabled (`forcedBro=1000`, the native random sentinel), so a rescue may select a vanilla bro.
-- First-spawn Bronobi selection requires the separate BroMaker integration. A campaign file cannot reference a new character by inserting a made-up HeroType value.
+- Custom first-spawn selection requires an explicit per-campaign BroMaker policy. A campaign file cannot reference a new character by inserting a made-up HeroType value.
 - All four start markers use variation 1, which the game interprets as invisible. Variations are appearance modes, not player indices; other values created unwanted starting cages.
 - The rescue cage anchor moved from row 24 to row 25. Native `Cage.PlaceCageBlocks` occupies the anchor row and the row below, across two columns, and attaches to ground two rows below. With the terrace surface at row 23, rows 24–25 must be clear and the anchor belongs at row 25.
 
 Evidence: REA FileIO/Campaign/Cage member record `ev_bc4e1c6717e1025badc736e6140404267d6db9cbb649fc68dbf37df98527adeb`; focused Cage record `ev_7b99052148d6d1ed9127b8ef57e03da09656cdf543757d692e661cbad5074250`. The footprint and spawn visibility findings derive from file-backed CIL; host serialization was executed and its output round-tripped through the installed code. That is separate from in-game rendering or gameplay verification.
 
-Prior runtime evidence is retained under `revisions/initial-rambro/`. New builds do not inherit the old playtest result. Check `playtest.json` for the exact current artifact hash and actual runtime coverage.
+The generated campaign leaves hero selection to the native vanilla pool. The generic MCP smoke test validates a separately authored custom preset and its own campaign; it does not imply that every later generated revision has been playtested.

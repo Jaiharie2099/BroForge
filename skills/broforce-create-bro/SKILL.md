@@ -5,7 +5,7 @@ description: Create or revise playable custom Broforce characters using BroMaker
 
 Use the `broforce-workshop` MCP tools and read `broforce://guide`. Ask only about material choices missing from the brief. Define the identity, primary attack, special, movement, and visual silhouette before choosing a baseline.
 
-`create_project(kind="bro")` creates a new named C# preset inheriting BroMaker's Rambro adapter, plus bro.json, assets/, animations.json and credits. This is a functional rifle baseline with inherited vanilla art, not a finished original character. Retain it for suitable rifle concepts. For other abilities, author C# using a verified BroMaker baseline/reference and compile/test it; do not claim changing a JSON label creates new mechanics. Bronobi is an example of custom SwordHero behavior, not the default template for every character.
+`create_project(kind="bro")` creates a new named C# preset inheriting BroMaker's Rambro adapter, plus bro.json, assets/, animations.json and credits. This is a functional rifle baseline with inherited vanilla art, not a finished original character. Retain it for suitable rifle concepts. For other abilities, author C# using a verified BroMaker baseline/reference and compile/test it; do not claim changing a JSON label creates new mechanics. Use the baseline that fits the requested mechanics and verify its actual runtime behavior.
 
 Edit src/Hero.cs, bro.json and related source files using `write_project_file`. The project manifest owns the preset identifier; keep the HeroPreset attribute and bro.json.characterPreset consistent. Use your host's file tools for complex source editing if preferable, then rebuild through MCP. Do not include or copy the game DLLs into the content package.
 

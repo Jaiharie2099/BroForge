@@ -98,7 +98,7 @@ def build():
     (OUT / 'The High Ground.bfc').write_bytes(b)
     design = dict(name='The High Ground', environment='Hell', expected_duration_seconds='15-30',
                   settings=settings, terraces=terraces, doodads=doodads,
-                  broPolicy=dict(initial='Bronobi', rescue='random vanilla bro',
+                  broPolicy=dict(initial='native vanilla selection', rescue='random vanilla bro',
                                  implementation='external BroMaker integration; campaign does not globally force a hero'),
                   intent='High industrial ledge descending into a burning demonic ravine; brief test.',
                   exit=dict(trigger_area=[48, 10, 63, 18], action='CallHellPortal', position=[61,12],

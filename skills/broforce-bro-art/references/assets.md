@@ -1,22 +1,22 @@
-# Bro asset contract and visual references
+# Bro asset contract
 
-The local preview website includes a **Bronobi art reference** page with the actual imported avatar, introduction sheet, body and gun sheets, special icon, and the cutscene configuration. These are reference assets credited to the imported package, not original art for your new character. Provenance is in `library/bros/bronobi/1.0.1/catalog.json`; preserve its upstream license and asset-specific credits when reusing material.
+Use the character's chosen BroMaker baseline to determine sprite layout and offsets. Consult [BroMaker's documentation and examples](https://github.com/Gorzontrok/Bro-Maker) rather than assuming every hero uses the same animation grid. Credit the authors and respect the licenses of any material you reuse.
 
-The known-good files are under `library/bros/bronobi/1.0.1/package/UMM/BroMaker_Storage/Bronobi/`:
+The following example filenames describe asset roles; they are not bundled artwork:
 
-| Role | Reference filename | Configuration |
+| Role | Example filename | Configuration |
 |---|---|---|
-| HUD portrait | avatar_Bronobi.png | parameters.Avatar |
-| Body animation | Bronobi_anim.png | parameters.Sprite |
-| Weapon animation | Bronobi_gun_anim.png | parameters.GunSprite |
-| Grabbed weapon | Bronobi_gun_grab_anim.png | beforeAwake.gunGrabSprite |
-| Special icon | Bronobi_ammo.png | parameters.SpecialIcons |
-| Introduction art | Bronobi_Cutscene.png | cutscene.spritePath |
-| Introduction voice | Bronobi.wav | cutscene.barkPath |
+| HUD portrait | avatar.png | parameters.Avatar |
+| Body animation | hero.png | parameters.Sprite |
+| Weapon animation | weapon.png | parameters.GunSprite |
+| Grabbed weapon | weapon-grab.png | beforeAwake.gunGrabSprite |
+| Special icon | special.png | parameters.SpecialIcons |
+| Introduction art | intro.png | cutscene.spritePath |
+| Introduction voice | intro.wav | cutscene.barkPath |
 
-For a new bro, all these paths are relative to its package root, which corresponds to the editable project's `assets/` directory. Omit an override to retain inherited game art. Art is not embedded inside Hero.dll.
+Paths in bro.json are relative to the built package root, corresponding to the editable project's `assets/` directory. Omit an override to retain inherited game art. Art is separate from Hero.dll. Import original/generated PNGs or WAVs with `import_bro_asset`, record provenance in CREDITS.md, and inspect them in the project's local preview.
 
-An introductory still can be configured with `playCutsceneOnFirstSpawn=true`, `heading`, optional subtitles, `spritePath`, `isAnimated=false`, and `spriteRect` matching the intended rectangle. Read the actual BroMaker format for advanced animated intros. Bronobi uses six frames with FrameWidth=42.5 and FrameRate=0.08; that unusual existing configuration is a reference, not a recommended universal template.
+For a still introduction, configure `playCutsceneOnFirstSpawn=true`, a `heading`, optional subtitles, `spritePath`, `isAnimated=false`, and `spriteRect` matching the intended image rectangle. Use the actual BroMaker documentation and game tests for animated introduction settings, timing and composition.
 
 Browser animation metadata is independent of game configuration:
 
@@ -33,6 +33,6 @@ Browser animation metadata is independent of game configuration:
 }
 ```
 
-Rectangles are `[x,y,width,height]` in pixels from the image's **top-left**. Use positive integer rectangles entirely within the PNG. This viewer metadata does not change BroMaker's runtime animation rows, weapon origins or material configuration.
+Rectangles are `[x,y,width,height]` in pixels from the image's top-left. Use positive integer rectangles entirely inside the PNG. These example dimensions illustrate the viewer format; choose actual dimensions from the selected runtime baseline. Preview metadata does not change BroMaker's runtime animation rows, weapon origins or material configuration.
 
-For introduction art, demonstrate the composed in-game result as well as the source image: framing, subtitle overlap, character identity and readability can only be judged in context.
+Review introduction artwork in context: framing, subtitle placement, identity and readability need both visual inspection and an in-game check.

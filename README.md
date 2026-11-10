@@ -1,8 +1,20 @@
 # BroForge
 
+![BroForge — Forge Bros. Then Bro the Force.](docs/media/hero.png)
+
+<p align="center"><strong>Linux · MCP · BroMaker · Local-first</strong></p>
+
 A local Linux authoring kit for **custom BroMaker characters and campaigns using Broforce's existing environments**. An agent can create editable projects, invoke the game's real campaign serializers, compile character DLLs, preview content on a local website, install it, and control a separate modded game for playtests.
 
 The MCP server, CLI, three agent skills, project library, and preview site are implemented. This is a local checkout, not a published npm package. GitHub synchronization and full-level game-rendered panoramas are not implemented. The level viewer currently shows an explicitly labeled schematic.
+
+## From a brief to a custom campaign
+
+Describe your level, let your agent call the MCP tools, and inspect the result in the local Web UI.
+
+![BroForge workflow replay: an agent creates Furnace Escape through MCP, edits the route, builds native campaign files, and opens the actual local level preview.](docs/media/workflow.gif)
+
+*20-second workflow replay using real MCP results and captures of the local Web UI. Timing is edited. The map is a schematic preview; this demo builds files without installing or playtesting them. [Media details and regeneration](docs/media/README.md).*
 
 ## Quick setup
 
@@ -61,11 +73,11 @@ It refuses to overwrite existing skill folders. MCP connection alone does not co
 
 **Then try this prompt:**
 
-> Use the Broforce Workshop MCP and its campaign skill to create a new very short Hell campaign called Furnace Escape. Make a distinct descending route with one rescue and a working exit. Start as Bronobi and let the rescue choose a vanilla bro. Build it and show me the local preview, then install and playtest it. Inspect the actual runtime character classes and completion result; report anything untested.
+> Use the Broforce Workshop MCP and its campaign skill to create a new very short Hell campaign called Furnace Escape. Make a distinct descending route with one rescue and a working exit. Use native vanilla bro selection for this first campaign. Build it and show me the local preview, then install and playtest it. Inspect the actual runtime character classes and completion result; report anything untested.
 
 For a character:
 
-> Use the Broforce Workshop bro and artwork skills to make a new rifle-based bro called Ember Ranger. Give it original artwork and an introduction portrait, using the Bronobi reference gallery to understand the asset roles. Use your image tools for art, and the MCP for project creation, imports, builds, preview, installation, and game testing. Keep the rifle template where appropriate and tell me which behaviors remain inherited. If image generation is unavailable, tell me before presenting inherited art as original.
+> Use the Broforce Workshop bro and artwork skills to make a new rifle-based bro called Ember Ranger. Give it original artwork and an introduction portrait, using the included asset guide and BroMaker documentation to understand the asset roles. Use your image tools for art, and the MCP for project creation, imports, builds, preview, installation, and game testing. Keep the rifle template where appropriate and tell me which behaviors remain inherited. If image generation is unavailable, tell me before presenting inherited art as original.
 
 ## Tools and references
 
@@ -98,7 +110,7 @@ Ask the agent to call `preview_project`, or start a persistent preview site your
 npm run preview
 ```
 
-Open the printed loopback URL. The site provides a project library, scrollable/zoomable campaign maps with optional trigger overlays, character images, configured animation loops, build findings, and a Bronobi art/intro reference gallery. It is a viewer; ask the agent for edits, installation and playtests. Schematic previews and animation loops are separate from actual game rendering and gameplay verification.
+Open the printed loopback URL. The site provides a project library, scrollable/zoomable campaign maps with optional trigger overlays, character images, configured animation loops, build findings, and the assets you import into your projects. It is a viewer; ask the agent for edits, installation and playtests. Schematic previews and animation loops are separate from actual game rendering and gameplay verification.
 
 Start the modded game manually with:
 
@@ -131,13 +143,13 @@ Close Broforce first. This test takes over game input. Its report is `runtime/mc
 
 Linux and one local player are the verified scope. There is no Windows support, online multiplayer promise, remote GitHub sync, hosted image generation, or stitched Unity level capture in this version. Read [the agent guide](docs/mcp-guide.md) and [native interface evidence](docs/native-interface.md) for detailed boundaries.
 
-Pinned upstream dependencies are UMM, RocketLib, BroMaker, and Bronobi. Imported Bronobi provenance, license and asset credits are retained under `library/bros/bronobi/1.0.1`; downloaded upstream archives remain reference material. Game assemblies are resolved from each user's installation and excluded from distributable code. The original verified [High Ground campaign and evidence](library/levels/high-ground/README.md) remain available.
+Pinned upstream dependencies are UMM, RocketLib, and BroMaker. No third-party character package is bundled or fetched by setup. Game assemblies are resolved from each user's installation and excluded from distributable code. The [High Ground demo](library/levels/high-ground/README.md) uses native vanilla hero selection; custom first-spawn selection is configured explicitly per authored campaign.
 
 ## Credits
 
 Custom character support is built on **[BroMaker](https://github.com/Gorzontrok/Bro-Maker)**, created and maintained by **[Gorzontrok](https://github.com/Gorzontrok)**. BroForge uses BroMaker's character framework, configuration and integration APIs; it does not replace that work. BroMaker credits **[alexneargarder](https://github.com/alexneargarder)** for the original custom-bro groundwork.
 
-The mod profile also uses [RocketLib by Gorzontrok](https://github.com/Gorzontrok/RocketLib) and [alexneargarder's Unity Mod Manager fork](https://github.com/alexneargarder/unity-mod-manager). The imported **Bronobi** reference character is by Gorzontrok; its [source and release provenance](library/bros/bronobi/1.0.1/catalog.json), [upstream license](library/bros/bronobi/1.0.1/UPSTREAM-LICENSE), and [asset credits](library/bros/bronobi/1.0.1/ASSET-CREDITS.txt) are retained. Dependency versions and hashes are pinned in `dependencies.lock.json` and fetched during setup.
+The mod profile also uses [RocketLib by Gorzontrok](https://github.com/Gorzontrok/RocketLib) and [alexneargarder's Unity Mod Manager fork](https://github.com/alexneargarder/unity-mod-manager). Dependency versions and hashes are pinned in `dependencies.lock.json` and fetched during setup. Third-party code retains its upstream license.
 
 Broforce is developed by [Free Lives](https://freelives.net/). This is an independent authoring tool and requires your own installed copy of the game.
 

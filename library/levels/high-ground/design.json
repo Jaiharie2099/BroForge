@@ -207,7 +207,7 @@
     }
   ],
   "broPolicy": {
-    "initial": "Bronobi",
+    "initial": "native vanilla selection",
     "rescue": "random vanilla bro",
     "implementation": "external BroMaker integration; campaign does not globally force a hero"
   },

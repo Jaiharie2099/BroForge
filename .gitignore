@@ -6,8 +6,7 @@ projects/
 investigation/sample-levels/
 investigation/*theme.json
 investigation/*.png
-# Downloaded upstream checkout is pinned in the imported character catalog.
-references/CustomBros/
+# Downloaded upstream framework dependencies.
 references/Bro-Maker/
 references/RocketLib/
 references/Mods-Broforce/

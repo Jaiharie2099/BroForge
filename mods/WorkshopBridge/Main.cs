@@ -22,7 +22,7 @@ namespace BroforceWorkshop {
   static readonly HashSet<int> initialPlayers = new HashSet<int>();
   static readonly List<object> spawnEvents = new List<object>();
   internal static bool enabled = true;
-  static string initialBro = "Bronobi";
+  static string initialBro;
   static JObject policies = new JObject();
   internal static readonly BindingFlags Flags = BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static | BindingFlags.Instance;
   public static bool Load(UnityModManager.ModEntry entry) {
@@ -138,10 +138,8 @@ namespace BroforceWorkshop {
     var c=p.character;
     players.Add(new { player=p.playerNum, character=c==null?null:c.GetType().FullName, hero=c==null?null:c.heroType.ToString(), x=c==null?0:c.X, y=c==null?0:c.Y });
    }
-   StoredHero bronobi;
-   bool loaded=BroMakerStorage.GetStoredHeroByName("Bronobi",out bronobi);
    var cages=UnityEngine.Object.FindObjectsOfType<Cage>().Select(c=>new { x=c.transform.position.x,y=c.transform.position.y,colliders=c.GetComponentsInChildren<Collider>().Select(col=>new { name=col.name,bottom=col.bounds.min.y,top=col.bounds.max.y }).ToArray() }).ToArray();
-   return new { scene=SceneManager.GetActiveScene().name, timeScale=Time.timeScale, editing=Map.isEditing, bronobiLoaded=loaded,cages=cages,
+   return new { scene=SceneManager.GetActiveScene().name, timeScale=Time.timeScale, editing=Map.isEditing,cages=cages,
     map=Map.MapData==null?null:Map.MapData.levelDescription, players=players, spawns=spawnEvents.ToArray() };
   }
   internal static void EnsureEditorInitial() {
@@ -165,8 +163,8 @@ namespace BroforceWorkshop {
     initialBro=(string)policy.Value["initialBro"];
     return true;
    }
-   initialBro="Bronobi";
-   return description.StartsWith("THE HIGH GROUND",StringComparison.Ordinal);
+   initialBro=null;
+   return false;
   }
   internal static bool Prepare(Player player) {
    var settings=BroMakerLib.Settings.instance;

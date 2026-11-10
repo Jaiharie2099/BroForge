@@ -25,14 +25,5 @@
     "checkout": "references/Bro-Maker",
     "archive": "Release/BroMaker-BroMaker-2.6.2.zip",
     "sha256": "c6f12e19f579e29d5072a5076143f096a854c908cb6d603e7a6bdef1452ac803"
-  },
-  {
-    "name": "Bronobi",
-    "version": "1.0.1",
-    "repository": "https://github.com/Gorzontrok/CustomBros.git",
-    "commit": "7c61c806a22e8637720558cc25d910a925ebb8e4",
-    "checkout": "references/CustomBros",
-    "archive": "Release/Bronobi/Gorzontrok-Bronobi-1.0.1.zip",
-    "sha256": "b1e00d567a3690e52173fd1c7bc000ce611c6ffc04698a792c4de74e48b3feef"
   }
 ]
