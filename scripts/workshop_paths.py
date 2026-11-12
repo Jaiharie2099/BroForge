@@ -1,9 +1,12 @@
 """Resolve a local installation without storing a machine-specific path in source."""
-import os
+import os, sys
+sys.dont_write_bytecode = True
+os.environ['PYTHONDONTWRITEBYTECODE'] = '1'
+from workspace_paths import configured_game_path
 from pathlib import Path
 
 def game_path():
-    override=os.environ.get('BROFORCE_GAME_PATH')
+    override=configured_game_path()
     candidates=[Path(override)] if override else [
         Path.home()/'snap/steam/common/.local/share/Steam/steamapps/common/Broforce',
         Path.home()/'.local/share/Steam/steamapps/common/Broforce',

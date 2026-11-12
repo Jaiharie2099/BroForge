@@ -1,9 +1,13 @@
 """Launch the Linux ELF game with the isolated Doorstop profile."""
+import os, sys
+sys.dont_write_bytecode = True
+os.environ['PYTHONDONTWRITEBYTECODE'] = '1'
 import os
 import sys
 from pathlib import Path
+from workspace_paths import state_path, workspace_path
 
-root = Path(__file__).resolve().parent.parent
+root = state_path()
 game = Path(sys.argv[1])
 with game.open('rb') as stream:
     header = stream.read(20)
@@ -15,6 +19,7 @@ if architecture is None:
     raise SystemExit('Doorstop profile supports only x86 and x64 ELF executables')
 profile = root / 'runtime/profile'
 environment = os.environ.copy()
+environment.update(BROFORCE_WORKSPACE=str(workspace_path()), BROFORCE_WORKSHOP_ROOT=str(root))
 environment.update(DOORSTOP_ENABLED='1',
     DOORSTOP_TARGET_ASSEMBLY=str(profile / 'UMM/Core/UnityModManager.dll'),
     DOORSTOP_MONO_DEBUG_ENABLED='0')

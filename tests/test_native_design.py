@@ -12,8 +12,9 @@ ROOT = Path(__file__).resolve().parents[1]
 class NativeDesignTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.dotnet = ROOT / '.toolchain/dotnet/dotnet'
-        cls.tool = ROOT / '.toolchain/native-campaign-tool/NativeCampaignTool.dll'
+        state = Path(os.environ.get('BROFORCE_WORKSPACE', Path.cwd())).resolve() / '.broforge'
+        cls.dotnet = state / '.toolchain/dotnet/dotnet'
+        cls.tool = state / '.toolchain/native-campaign-tool/NativeCampaignTool.dll'
         cls.managed = Path(os.environ.get('BROFORCE_MANAGED_DIR', Path.home() / 'snap/steam/common/.local/share/Steam/steamapps/common/Broforce/Broforce_Data/Managed'))
         if not cls.dotnet.exists() or not cls.tool.exists() or not (cls.managed / 'Assembly-CSharp.dll').exists():
             raise unittest.SkipTest('Requires local .NET tool build and installed Broforce managed assemblies')

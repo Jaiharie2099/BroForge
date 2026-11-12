@@ -1,11 +1,14 @@
 """Local client for the game's WorkshopBridge; no mouse/keyboard automation."""
+import os, sys
+sys.dont_write_bytecode = True
+os.environ['PYTHONDONTWRITEBYTECODE'] = '1'
 import argparse,json,time,uuid,os
 from datetime import datetime,timedelta,timezone
 from pathlib import Path
-ROOT=Path(__file__).resolve().parents[1]
+from workspace_paths import state_path
 
 def request(op, timeout=30, **params):
-    ipc=ROOT/'runtime/profile/ipc'
+    ipc=state_path()/'runtime/profile/ipc'
     if not (ipc/'requests').is_dir(): raise RuntimeError('Launch scripts/run_modded.sh first')
     ready=ipc/'ready.json'
     if not ready.exists(): raise RuntimeError('Game bridge is not ready; launch scripts/run_modded.sh')

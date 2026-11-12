@@ -21,3 +21,8 @@ dependencies/
 library/bros/*/*/package/
 library/bros/*/*/*.zip
 investigation/
+
+# Workspace-local runtime and generated launch settings.
+.broforge/
+broforge.json
+play-broforce

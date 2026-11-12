@@ -6,7 +6,7 @@
 
 A local Linux authoring kit for **custom BroMaker characters and campaigns using Broforce's existing environments**. An agent can create editable projects, invoke the game's real campaign serializers, compile character DLLs, preview content on a local website, install it, and control a separate modded game for playtests.
 
-The MCP server, CLI, three agent skills, project library, and preview site are implemented. This is a local checkout, not a published npm package. GitHub synchronization and full-level game-rendered panoramas are not implemented. The level viewer currently shows an explicitly labeled schematic.
+The MCP server, CLI, four agent skills, project library, and preview site are implemented. This is a local checkout, not a published npm package. GitHub synchronization and full-level game-rendered panoramas are not implemented. The level viewer currently shows an explicitly labeled schematic.
 
 ## From a brief to a custom campaign
 
@@ -16,31 +16,64 @@ Describe your level, let your agent call the MCP tools, and inspect the result i
 
 *20-second workflow replay using real MCP results and captures of the local Web UI. Timing is edited. The map is a schematic preview; this demo builds files without installing or playtesting them. [Media details and regeneration](docs/media/README.md).*
 
+## Spider Bro: a playable bundled character
+
+![Spider Bro firing twin web shots, using Spider Sense, and swinging in the actual game](docs/media/spider-bro-gameplay.gif)
+
+**Spider Bro 0.2.5** is included as an editable character, with the approved sprite animations, chest emblem, HUD portrait and special icon. The GIF is real gameplay captured through MCP: lethal twin web shots, Spider Sense activated through the normal special input, and a sustained web swing followed by release. It is cropped and captioned; no gameplay poses or mechanics are fabricated.
+
+| Input | Behavior |
+|---|---|
+| Tap fire | Two damaging web pellets, one from each hand |
+| Hold fire | Attach a web and swing using inherited Indiana rope physics |
+| Release fire | Let go with an airborne launch boost |
+| Special | Five seconds of Spider Sense protection and dodge reactions; three charges |
+| Melee | Punch enemies, props and blocks ahead; crouch to punch the floor |
+
+Create your own working copy through MCP:
+
+```javascript
+create_project({id: "spider-bro", kind: "bro", name: "Spider Bro", template: "spider-bro"})
+play_project({id: "spider-bro"})
+```
+
+`play_project` builds and installs the character and an editable playtest campaign, then checks the actual loaded class and assembly identity. The [character sources, assets and credits](library/bros/spider-bro/README.md) and [recording arena](library/campaigns/spider-bro-showcase/README.md) are bundled. The introduction cutscene is disabled for the Indiana adapter; native rope behavior and sounds remain inherited. The arena is for feature tests, not a campaign completion demo.
+
+To recreate the footage after workspace setup, close any running Broforce session and run `node scripts/capture_spider_demo.js`. This explicit live test launches the game and controls player one. Raw frames and the MCP transcript stay under `.broforge/runtime/`; the small GIF and sanitized evidence are under `docs/media/`. See [media details](docs/media/README.md).
+
 ## Quick setup
 
-Requires Linux x86_64, an installed supported Broforce build, Node 22+ with npm (or Bun), Python 3.12+, Steam, and a graphical session for playing. The tested game assembly SHA-256 is `d518444c45ba73f834bfbd163973f3c0fdbb935522144d9b95e6db74029a6b86`. Setup refuses unknown builds rather than claiming compatibility. Python 3.12+ is needed for safe tar extraction when provisioning .NET.
+Requires Linux x86_64, a supported installed Broforce build, Node 22+, Python 3.12+, Steam, and a graphical session for play. Game assemblies stay in the purchased installation. Toolchain downloads, mod dependencies, runtime profiles, backups, and logs stay in the selected workspace. Setup does not install demo campaigns or change Steam.
 
-From this directory, with Broforce closed:
-
-```bash
-npm ci
-npm run setup
-npm run doctor
-node src/cli.js config
-```
-
-Or use Bun:
+This is a local checkout, not a published npm package. Install this server's Node dependencies once with `npm ci` in the checkout. From the directory where you want to author content:
 
 ```bash
-bun install
-bun run setup
-bun run doctor
-bun src/cli.js config
+node /absolute/path/to/BroForce/src/cli.js --workspace "$PWD" setup
+node /absolute/path/to/BroForce/src/cli.js --workspace "$PWD" doctor
+node /absolute/path/to/BroForce/src/cli.js --workspace "$PWD" config
 ```
 
-Setup downloads the exact dependency archives in `dependencies.lock.json`, verifies their hashes, provisions .NET SDK 8.0.427 under `.toolchain/` if needed, builds the native authoring host and live bridge, and prepares the isolated `runtime/profile`. It also installs the existing **The High Ground** demo campaign, backing up differing files of the same name. It does not rewrite game assemblies or Steam's normal launch options. Normal Steam launch stays vanilla; the Workshop launcher enables the mods.
+The workspace contains `broforge.json`, editable `projects/`, a `play-broforce` launcher, and `.broforge/` managed state. The state directory contains `.toolchain/`, `dependencies/`, `runtime/profile/`, ownership records and backups. No game copy or global .NET installation is required. The server package remains the read-only source of templates, bridge code, and bundled skills.
 
-If discovery fails, set `BROFORCE_GAME_PATH` to the game directory before setup and put the same environment variable in the MCP configuration. Installation discovery covers Snap Steam and standard Linux Steam paths. Setup needs network access for missing prerequisites; normal MCP serving uses installed prerequisites only. `npm run setup -- --skip-profile` prepares the native tooling without updating the mod profile while the game is running.
+Broforce must be closed while preparing the profile. `setup --skip-profile` prepares authoring tools only. `init --no-prepare` creates the workspace without downloads. `setup --repair` explicitly refreshes an existing setup. `--game-path PATH` binds an installation; `BROFORCE_GAME_PATH` overrides discovery. Unknown game builds are rejected; the tested assembly SHA-256 is `d518444c45ba73f834bfbd163973f3c0fdbb935522144d9b95e6db74029a6b86`.
+
+Through MCP, call `initialize_workspace` and poll `workspace_status`: setup runs as a local job and survives an individual tool request timing out. Progress/errors are in `.broforge/runtime/setup.log`. Normal serving and inspection do not download dependencies implicitly.
+
+### Play and optional Steam integration
+
+`play_project(id)` resolves local character dependencies, builds current content, installs it, launches the managed profile and verifies the loaded map and initial bro. Selecting a bro creates an editable playtest campaign. A required restart is reported; `restart=true` authorizes restarting this workspace's running game. Runtime loading is separate from testing mechanics or finishing a level.
+
+Run `./play-broforce` for everyday modded play. It uses the purchased installation and this workspace's profile. There is no second full game installation. Normal Steam launch remains unchanged unless you explicitly enable integration.
+
+To make Steam's existing Play button select this profile, use `configure_launch(mode="steam", action="plan")`, review its exact settings change, then `action="apply"` with its `planId`. Steam must be closed. Existing launch options are composed with the wrapper, and only Broforce's launch-options setting is edited. `action="status"` gives the current removal plan; `action="remove"` restores the recorded original setting without replacing unrelated Steam preferences.
+
+Native campaign files must be installed into the game's `Levels` folder. Physical filenames include the workspace ID to prevent collisions between workspaces; game metadata keeps the campaign name. These external writes, optional skill exports and launch settings are tracked for removal. Authored projects and mod packages stay local. Installing a bro does not imply forcing it as every spawn: campaign `initialBro` controls repeatable first spawns; normal availability follows BroMaker settings.
+
+### Remove managed changes
+
+Use the bundled **uninstall** skill or `uninstall_workspace` for a dry run. Apply its returned `planId` to restore replaced files/settings and remove unchanged files created by this workspace, including setup runtime, launchers and exported skills. Authored projects, build history, backups and audit records are retained. Modified files and missing/corrupt backups block removal instead of being overwritten. `includeRuntime=false` keeps the setup runtime. `uninstall_project` removes just one character or campaign.
+
+A CLI equivalent is `uninstall`, followed by `uninstall --apply --plan-id ID`. Untracked legacy installs are reported rather than silently adopted. Another workspace's installations and the purchased game are not removed.
 
 ## Connect another agent
 
@@ -57,19 +90,19 @@ If discovery fails, set `BROFORCE_GAME_PATH` to the game directory before setup 
 }
 ```
 
-The server uses **stdio**. Do not start the preview command as the MCP server. No working-directory assumption is required. Use the generated config rather than these example paths. Set `BROFORCE_PROJECTS_DIR` in the client's `env` to keep projects somewhere other than this checkout's `projects/`.
+The server uses **stdio**. Do not start the preview command as the MCP server. The generated configuration binds BROFORCE_WORKSPACE explicitly, independently of the client working directory. Use the generated config rather than these example paths. Set BROFORCE_WORKSPACE in the client env to the intended workspace; an optional BROFORCE_PROJECTS_DIR must remain inside it.
 
-The server exposes the skills as MCP resources and starter prompts. For automatic skill discovery, copy the three folders in `skills/` into your agent's skill directory. Setup can do this explicitly:
+The server exposes the skills as MCP resources and starter prompts. For automatic skill discovery, explicitly export the four bundled skills into your agent's skill directory:
 
 ```bash
-npm run setup -- --skip-profile --skills-dir /path/to/your/agents/skills
+node src/cli.js --workspace /path/to/workspace install-skills /path/to/your/agents/skills
 ```
 
-It refuses to overwrite existing skill folders. MCP connection alone does not configure your client's normal skill discovery. No global agent configuration is changed automatically.
+Exports are journaled and differing existing files are refused. MCP connection alone does not configure your client's normal skill discovery. No global agent configuration is changed automatically.
 
 **Give your agent this prompt:**
 
-> Set up the existing Broforce Workshop MCP from this checkout. Read README.md first. Run npm ci, inspect the installation, and run npm run setup with Broforce closed; use BROFORCE_GAME_PATH if needed. Do not create another server implementation. Generate the MCP entry with node src/cli.js config and add it using this client's supported configuration mechanism. Install the three skills into this agent's skill directory if it supports skills. Reconnect if necessary, then verify that inspect_installation works and read broforce://guide. Tell me when the tools are connected and which game build is supported.
+> Set up the existing Broforce Workshop MCP from this checkout. Read README.md first. Run npm ci, inspect the installation, and run npm run setup with Broforce closed; use BROFORCE_GAME_PATH if needed. Do not create another server implementation. Generate the MCP entry with node src/cli.js config and add it using this client's supported configuration mechanism. Install the four skills into this agent's skill directory if it supports skills. Reconnect if necessary, then verify that inspect_installation works and read broforce://guide. Tell me when the tools are connected and which game build is supported.
 
 **Then try this prompt:**
 
@@ -83,6 +116,9 @@ For a character:
 
 | Tool | What it does |
 |---|---|
+| `initialize_workspace`, `workspace_status` | Prepare and inspect workspace-local tooling/profile |
+| `play_project` | Build dependencies, install, launch and verify map/character loading |
+| `configure_launch`, `uninstall_workspace` | Optional reversible Steam launch integration and tracked cleanup |
 | `inspect_installation` | Fingerprint, compatibility, prerequisites and bridge state |
 | `create_project`, `list_projects`, `read_project` | Persistent editable campaign or bro projects |
 | `write_project_file`, `configure_project`, `import_bro_asset` | Edit sources/settings and import local PNG/WAV assets |
@@ -90,7 +126,7 @@ For a character:
 | `build_project` | Native `.bfc`/`.bfg` serialization or Unity-compatible bro DLL compilation |
 | `preview_project` | Start a read-only local website and return the project's URL |
 | `install_project`, `uninstall_project` | Install current builds, remove unchanged installed files, restore recorded backups |
-| `game_control` | Launch, inspect, load campaigns/editor, switch loaded bro, bounded input, quit |
+| `game_control` | Launch, inspect, load maps, select a bro, bounded movement/fire/special/melee input, game-view recording, quit |
 
 Resources: `broforce://guide`, `broforce://skill-create-campaign`, `broforce://skill-create-bro`, `broforce://skill-bro-art`, `broforce://campaign-design`, and `broforce://bro-assets`. Prompts: `create-campaign` and `create-bro`.
 
@@ -115,7 +151,7 @@ Open the printed loopback URL. The site provides a project library, scrollable/z
 Start the modded game manually with:
 
 ```bash
-./scripts/run_modded.sh
+./play-broforce
 ```
 
 Or use MCP `game_control(action="launch")`. Installed campaigns appear in **Custom Campaigns**. The original standalone game client remains available as `python3 scripts/workshop.py --help`.

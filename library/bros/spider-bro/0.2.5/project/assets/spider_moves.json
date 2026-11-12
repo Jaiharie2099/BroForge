@@ -1,0 +1,135 @@
+{
+  "cell": [
+    32,
+    32
+  ],
+  "columns": 8,
+  "rows": [
+    {
+      "name": "idle",
+      "row": 0,
+      "frames": 4,
+      "fps": 5
+    },
+    {
+      "name": "run",
+      "row": 1,
+      "frames": 8,
+      "fps": 13
+    },
+    {
+      "name": "crouch",
+      "row": 2,
+      "frames": 4,
+      "fps": 7
+    },
+    {
+      "name": "jump",
+      "row": 3,
+      "frames": 4,
+      "fps": 9
+    },
+    {
+      "name": "fall",
+      "row": 4,
+      "frames": 4,
+      "fps": 8
+    },
+    {
+      "name": "swing",
+      "row": 5,
+      "frames": 6,
+      "fps": 10
+    },
+    {
+      "name": "dual_fire",
+      "row": 6,
+      "frames": 4,
+      "fps": 16
+    },
+    {
+      "name": "wall_climb",
+      "row": 7,
+      "frames": 6,
+      "fps": 4
+    },
+    {
+      "name": "ladder",
+      "row": 8,
+      "frames": 6,
+      "fps": 3
+    },
+    {
+      "name": "wall_slide",
+      "row": 9,
+      "frames": 4,
+      "fps": 3
+    },
+    {
+      "name": "roll",
+      "row": 10,
+      "frames": 8,
+      "fps": 14
+    },
+    {
+      "name": "dodge",
+      "row": 11,
+      "frames": 6,
+      "fps": 14
+    },
+    {
+      "name": "melee",
+      "row": 12,
+      "frames": 6,
+      "fps": 14
+    },
+    {
+      "name": "death",
+      "row": 13,
+      "frames": 6,
+      "fps": 10
+    },
+    {
+      "name": "high_five",
+      "row": 14,
+      "frames": 6,
+      "fps": 9
+    },
+    {
+      "name": "rescue",
+      "row": 15,
+      "frames": 6,
+      "fps": 9
+    },
+    {
+      "name": "flex",
+      "row": 16,
+      "frames": 6,
+      "fps": 8
+    },
+    {
+      "name": "zipline",
+      "row": 17,
+      "frames": 4,
+      "fps": 7
+    },
+    {
+      "name": "recall",
+      "row": 18,
+      "frames": 6,
+      "fps": 9
+    },
+    {
+      "name": "crouch_run",
+      "row": 19,
+      "frames": 8,
+      "fps": 11
+    },
+    {
+      "name": "special",
+      "row": 20,
+      "frames": 6,
+      "fps": 12
+    }
+  ]
+}

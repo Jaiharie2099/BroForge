@@ -1,0 +1,46 @@
+{
+  "source": "Actual Unity game frames captured through BroForge MCP",
+  "editing": "Cropped, nearest-neighbor resized and captioned. Clips joined; original elapsed frame timing retained. No synthetic gameplay or test invulnerability flags.",
+  "clips": [
+    {
+      "label": "combat",
+      "framesUsed": 17,
+      "capturedFrames": 26,
+      "durationSeconds": 3.27,
+      "assemblyMvid": "f1245e95-7944-4ac9-b828-ef533e0cf3d1",
+      "maxKills": 1,
+      "maxPellets": 8,
+      "specialActiveFrames": 24,
+      "airborneAttachedFrames": 0
+    },
+    {
+      "label": "sense",
+      "framesUsed": 23,
+      "capturedFrames": 33,
+      "durationSeconds": 4.4,
+      "assemblyMvid": "f1245e95-7944-4ac9-b828-ef533e0cf3d1",
+      "maxKills": 0,
+      "maxPellets": 0,
+      "specialActiveFrames": 31,
+      "airborneAttachedFrames": 0
+    },
+    {
+      "label": "swing",
+      "framesUsed": 22,
+      "capturedFrames": 26,
+      "durationSeconds": 4.22,
+      "assemblyMvid": "f1245e95-7944-4ac9-b828-ef533e0cf3d1",
+      "maxKills": 2,
+      "maxPellets": 8,
+      "specialActiveFrames": 0,
+      "airborneAttachedFrames": 16
+    }
+  ],
+  "gif": {
+    "width": 768,
+    "height": 480,
+    "frames": 62,
+    "durationSeconds": 11.89,
+    "bytes": 891409
+  }
+}

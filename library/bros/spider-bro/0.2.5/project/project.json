@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "spider-bro",
+  "kind": "bro",
+  "name": "Spider Bro",
+  "author": "Local author",
+  "version": "0.2.5",
+  "created": "2026-11-10T18:17:13.541Z",
+  "preset": "Workshop_spider_bro",
+  "dependencies": [],
+  "provenance": {
+    "template": "spider-bro",
+    "version": "0.2.5"
+  }
+}

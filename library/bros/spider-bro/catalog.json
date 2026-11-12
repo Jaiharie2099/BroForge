@@ -1,0 +1,9 @@
+{
+  "id": "spider-bro",
+  "name": "Spider Bro",
+  "version": "0.2.5",
+  "kind": "bro",
+  "project": "0.2.5/project",
+  "editable": true,
+  "template": "spider-bro"
+}

@@ -1,0 +1,48 @@
+{
+  "name": "Spider Bro",
+  "characterPreset": "Workshop_spider_bro",
+  "parameters": {
+    "Avatar": "avatar.png",
+    "SpecialIcons": "special.png",
+    "SpecialIconSpacing": 6,
+    "Sprite": "spider_anim.png",
+    "GunSprite": "spider_gun.png"
+  },
+  "abilities": {},
+  "beforeAwake": {
+    "speed": 130,
+    "fireRate": 0.2,
+    "originalSpecialAmmo": 3,
+    "debugEventLog": false
+  },
+  "afterAwake": {},
+  "beforeStart": {},
+  "afterStart": {},
+  "cutscene": {
+    "playCutsceneOnFirstSpawn": false,
+    "heading": "Spider Bro",
+    "headingScale": 0.2,
+    "headingColor": {
+      "r": 0.84,
+      "g": 0.13,
+      "b": 0.17,
+      "a": 1.0
+    },
+    "subtitle1": "Spider Sense: tingling",
+    "subtitle1Color": {
+      "r": 0.94,
+      "g": 0.94,
+      "b": 0.96,
+      "a": 1.0
+    },
+    "subtitleScale": 0.1,
+    "spritePath": "intro.png",
+    "spriteRect": {
+      "x": 0.0,
+      "y": 0.0,
+      "width": 256,
+      "height": 256
+    },
+    "isAnimated": false
+  }
+}

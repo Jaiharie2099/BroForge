@@ -1,4 +1,6 @@
 using System.Reflection;
+using System.Reflection.Metadata;
+using System.Reflection.PortableExecutable;
 using System.Runtime.Loader;
 using System.Security.Cryptography;
 using System.Text.Json;
@@ -17,6 +19,15 @@ internal static class Program
             var options = new Dictionary<string, string>();
             for (int i = 0; i < args.Length; i += 2)
                 options.Add(args[i], args[i + 1]);
+            if (options.TryGetValue("--assembly-identity", out string? identityPath))
+            {
+                using var stream = File.OpenRead(identityPath);
+                using var pe = new PEReader(stream);
+                var metadata = pe.GetMetadataReader();
+                string mvid = metadata.GetGuid(metadata.GetModuleDefinition().Mvid).ToString("D");
+                Console.WriteLine(JsonSerializer.Serialize(new { mvid, sha256 = Convert.ToHexString(SHA256.HashData(File.ReadAllBytes(identityPath))).ToLowerInvariant() }));
+                return 0;
+            }
             string managed = Path.GetFullPath(options["--managed"]);
             string output = Path.GetFullPath(options.GetValueOrDefault("--output", "runtime/catalog.json"));
             if (!options.ContainsKey("--catalog") && options.ContainsKey("--input") == options.ContainsKey("--design"))

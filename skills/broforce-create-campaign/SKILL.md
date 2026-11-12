@@ -19,3 +19,5 @@ Important placement rules learned from actual failures:
 Call `preview_project` and inspect the scrollable schematic for route, support, gaps, and trigger positions. A valid native round trip establishes a readable file, not a completable level. Install with `install_project` when the user's request includes trying/adding the content. Use `game_control` launch/start_campaign/status and bounded drive inputs to playtest. Supply `projectId` to bind observations to installed hashes. New bro DLLs require restarting the Workshop profile before testing.
 
 Check first-spawn class, rescue behavior, cage position, and actual completion in the normal campaign path. Do not substitute a forced scene change for a gameplay completion test. Report what was observed and what remains untested, and return the preview URL and campaign file paths. Keep sources and generated outputs together.
+
+Workspace setup is available through `initialize_workspace` and `workspace_status`. Keep generated content inside the bound workspace. For cleanup use `broforce://skill-uninstall`; external game writes and optional launch integration must remain journaled.

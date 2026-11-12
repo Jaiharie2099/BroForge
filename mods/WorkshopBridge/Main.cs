@@ -18,7 +18,11 @@ namespace BroforceWorkshop {
   static string session=Guid.NewGuid().ToString("N");
   static float poll;
   internal static DateTime driveUntil = DateTime.MinValue;
-  internal static bool driveRight, driveLeft, driveFire, driveJump;
+  internal static bool driveRight, driveLeft, driveFire, driveJump, driveUp, driveDown, driveSpecial, driveMelee;
+  static bool recording, recordingBusy;
+  static int recordedFrames;
+  static string recordingDirectory;
+  static string recordingError;
   static readonly HashSet<int> initialPlayers = new HashSet<int>();
   static readonly List<object> spawnEvents = new List<object>();
   internal static bool enabled = true;
@@ -62,6 +66,23 @@ namespace BroforceWorkshop {
   static object Execute(JObject req) {
    string op=(string)req["op"];
    if(op=="status") return Status();
+   if(op=="record_status") return RecordingStatus();
+   if(op=="record_stop") { recording=false;return RecordingStatus(); }
+   if(op=="record_start") {
+    if(recordingBusy) throw new InvalidOperationException("A recording is already active");
+    string name=(string)req["name"];
+    if(string.IsNullOrEmpty(name)||name.Length>64||name.Any(c=>!((c>='a'&&c<='z')||(c>='0'&&c<='9')||c=='-'||c=='_')))throw new ArgumentException("Recording name must be lowercase letters, digits, hyphens or underscores");
+    int ms=(int?)req["milliseconds"]??5000,fps=(int?)req["fps"]??8;
+    if(ms<1||ms>10000||fps<1||fps>15)throw new ArgumentException("Recording must be <=10000ms at 1..15fps");
+    recordingDirectory=Path.GetFullPath(Path.Combine(Path.Combine(Ipc,"../../recordings"),name));
+    if(Directory.Exists(recordingDirectory))throw new InvalidOperationException("Recording already exists; choose another name");
+    for(var directory=new DirectoryInfo(recordingDirectory);directory!=null;directory=directory.Parent) {
+     if((Directory.Exists(directory.FullName)||File.Exists(directory.FullName))&&(File.GetAttributes(directory.FullName)&FileAttributes.ReparsePoint)!=0)throw new InvalidOperationException("Recording path cannot contain symlinks");
+    }
+    Directory.CreateDirectory(recordingDirectory);recordedFrames=0;recordingError=null;recording=true;recordingBusy=true;
+    var go=new GameObject("BroForgeCapture");UnityEngine.Object.DontDestroyOnLoad(go);
+    go.AddComponent<GameCapture>().StartCoroutine(RecordFrames(go,ms,fps));return RecordingStatus();
+   }
    if(op=="switch_bro") {
     StoredHero chosen; string name=(string)req["name"];
     if(!BroMakerStorage.GetStoredHeroByName(name,out chosen)) throw new InvalidOperationException("Bro is not loaded: "+name+". Restart the Workshop profile after installing a new DLL.");
@@ -73,6 +94,7 @@ namespace BroforceWorkshop {
    if(op=="start") { var join=UnityEngine.Object.FindObjectOfType<JoinScreen>(); if(join==null) throw new InvalidOperationException("Join screen is not ready"); typeof(JoinScreen).GetMethod("StartGame",Flags).Invoke(join,null); return new { starting=true }; }
    if(op=="drive") {
     int ms=(int?)req["milliseconds"]??500; if(ms<1 || ms>10000) throw new ArgumentException("duration must be 1..10000 milliseconds");
+    driveUp=(bool?)req["up"]??false;driveDown=(bool?)req["down"]??false;driveSpecial=(bool?)req["special"]??false;driveMelee=(bool?)req["melee"]??false;
     driveRight=(bool?)req["right"]??false; driveLeft=(bool?)req["left"]??false; driveFire=(bool?)req["fire"]??false; driveJump=(bool?)req["jump"]??false;
     driveUntil=DateTime.UtcNow.AddMilliseconds(ms); return new { driving=true, milliseconds=ms };
    }
@@ -131,15 +153,38 @@ namespace BroforceWorkshop {
    }
    throw new ArgumentException("Unknown command: "+op);
   }
+  static object RecordingStatus() { return new { recording=recordingBusy,frames=recordedFrames,directory=recordingDirectory,error=recordingError }; }
+  public class GameCapture : MonoBehaviour { }
+  static System.Collections.IEnumerator RecordFrames(GameObject owner,int milliseconds,int fps) {
+   float start=Time.realtimeSinceStartup,next=start;Texture2D capture=null;
+   try {
+    while(recording&&Time.realtimeSinceStartup-start<milliseconds/1000f) {
+     yield return new WaitForEndOfFrame();
+     if(Time.realtimeSinceStartup<next)continue;
+     try {
+      if(capture==null||capture.width!=Screen.width||capture.height!=Screen.height){if(capture!=null)UnityEngine.Object.Destroy(capture);capture=new Texture2D(Screen.width,Screen.height,TextureFormat.RGB24,false);}
+      capture.ReadPixels(new Rect(0,0,Screen.width,Screen.height),0,0);capture.Apply();
+      string file=string.Format("frame-{0:D4}.png",recordedFrames);
+      File.WriteAllBytes(Path.Combine(recordingDirectory,file),capture.EncodeToPNG());
+      File.AppendAllText(Path.Combine(recordingDirectory,"frames.jsonl"),JsonConvert.SerializeObject(new { file=file,elapsed=Time.realtimeSinceStartup-start,state=Status() })+"\n");
+      recordedFrames++;next=Time.realtimeSinceStartup+1f/fps;
+     }catch(Exception ex){recordingError=ex.Message;break;}
+    }
+   }finally{recording=false;recordingBusy=false;if(capture!=null)UnityEngine.Object.Destroy(capture);UnityEngine.Object.Destroy(owner);File.WriteAllText(Path.Combine(recordingDirectory,"recording.json"),JsonConvert.SerializeObject(new { fps=fps,frames=recordedFrames,error=recordingError }));}
+  }
+  static object Counter(object target,string name) {
+   try {for(Type type=target.GetType();type!=null;type=type.BaseType){object value=null;var property=type.GetProperty(name,Flags|BindingFlags.DeclaredOnly);var field=type.GetField(name,Flags|BindingFlags.DeclaredOnly);if(property!=null)value=property.GetValue(target,null);else if(field!=null)value=field.GetValue(target);else continue;return value!=null&&value.GetType().IsEnum?value.ToString():value;}} catch { }
+   return null;
+  }
   static object Status() {
    var players=new List<object>();
    if(HeroController.players!=null) foreach(Player p in HeroController.players) {
     if(p==null) continue;
     var c=p.character;
-    players.Add(new { player=p.playerNum, character=c==null?null:c.GetType().FullName, hero=c==null?null:c.heroType.ToString(), x=c==null?0:c.X, y=c==null?0:c.Y });
+    players.Add(new { player=p.playerNum, character=c==null?null:c.GetType().FullName, hero=c==null?null:c.heroType.ToString(), assemblyMvid=c==null?null:c.GetType().Assembly.ManifestModule.ModuleVersionId.ToString("D"), counters=c==null?null:new {volleys=Counter(c,"WebVolleys"),pellets=Counter(c,"WebPellets"),hits=Counter(c,"WebHits"),kills=Counter(c,"WebKills"),worldHits=Counter(c,"WorldHits"),spiderSense=Counter(c,"SpiderSenseActive"),specialAmmo=Counter(c,"SpecialAmmo"),whipState=Counter(c,"whipState"),xVelocity=Counter(c,"xI"),yVelocity=Counter(c,"yI")}, x=c==null?0:c.X, y=c==null?0:c.Y });
    }
    var cages=UnityEngine.Object.FindObjectsOfType<Cage>().Select(c=>new { x=c.transform.position.x,y=c.transform.position.y,colliders=c.GetComponentsInChildren<Collider>().Select(col=>new { name=col.name,bottom=col.bounds.min.y,top=col.bounds.max.y }).ToArray() }).ToArray();
-   return new { scene=SceneManager.GetActiveScene().name, timeScale=Time.timeScale, editing=Map.isEditing,cages=cages,
+   return new { scene=SceneManager.GetActiveScene().name, timeScale=Time.timeScale, editing=Map.isEditing, cages=cages,
     map=Map.MapData==null?null:Map.MapData.levelDescription, players=players, spawns=spawnEvents.ToArray() };
   }
   internal static void EnsureEditorInitial() {
@@ -152,7 +197,17 @@ namespace BroforceWorkshop {
   internal static void ResetMap() {
    initialPlayers.Clear();
    string file=Path.GetFullPath(Path.Combine(Ipc,"../campaign-policies.json"));
-   try { policies=File.Exists(file)?JObject.Parse(File.ReadAllText(file)):new JObject(); }
+   try {
+    policies=File.Exists(file)?JObject.Parse(File.ReadAllText(file)):new JObject();
+    string directory=Path.GetFullPath(Path.Combine(Ipc,"../campaign-policies.d"));
+    if(Directory.Exists(directory)) foreach(string policyFile in Directory.GetFiles(directory,"*.json").OrderBy(p=>p)) {
+     JObject configured=JObject.Parse(File.ReadAllText(policyFile));
+     foreach(var property in configured.Properties()) {
+      if(policies[property.Name]!=null) throw new InvalidOperationException("Duplicate campaign policy: "+property.Name);
+      policies[property.Name]=property.Value.DeepClone();
+     }
+    }
+   }
    catch(Exception ex) { policies=new JObject(); Log("policy_error",new { error=ex.Message }); }
    Log("map_awake",new { scene=SceneManager.GetActiveScene().name });
   }
@@ -217,7 +272,7 @@ namespace BroforceWorkshop {
  static class InputPatch {
   static void Postfix(Player __instance, ref bool up, ref bool down, ref bool left, ref bool right, ref bool fire, ref bool buttonJump, ref bool special, ref bool highFive, ref bool buttonGesture, ref bool sprint) {
    if(__instance.playerNum!=0 || DateTime.UtcNow>=Main.driveUntil) return;
-   up=false; down=false; left=Main.driveLeft; right=Main.driveRight; fire=Main.driveFire; buttonJump=Main.driveJump; special=false; highFive=false; buttonGesture=false; sprint=false;
+   up=Main.driveUp; down=Main.driveDown; left=Main.driveLeft; right=Main.driveRight; fire=Main.driveFire; buttonJump=Main.driveJump; special=Main.driveSpecial; highFive=Main.driveMelee; buttonGesture=false; sprint=false;
   }
  }
 }

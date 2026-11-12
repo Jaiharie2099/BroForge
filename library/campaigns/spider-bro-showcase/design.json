@@ -1,0 +1,147 @@
+{
+  "name": "Spider Bro Showcase",
+  "levels": [
+    {
+      "width": 48,
+      "height": 26,
+      "settings": {
+        "suppressAnnouncer": true,
+        "cameraSpeed": 32,
+        "regualrMookSpawnProbability": 1,
+        "bigMookSpawnProbability": 0,
+        "suicideMookSpawnProbability": 0,
+        "riotShieldMookSpawnProbability": 0,
+        "oilBarrelSpawnProbability": 0,
+        "propaneTankSpawnProbability": 0,
+        "acidBarrelSpawnProbability": 0,
+        "spikeTrapSpawnProbability": 0,
+        "mineFieldSpawnProbability": 0,
+        "coconutProbability": 0,
+        "spawnAmmoCrates": true,
+        "canHighFiveSlowDownThisLevel": true,
+        "ammoCrateFrequencyMultiplier": 1,
+        "ammoCrateRemoteCarProbability": 0,
+        "vignettingEffect": false,
+        "bloomEffect": false,
+        "bloomEffectM": 1,
+        "bloomThresholdM": 1,
+        "forceHardMode": false,
+        "alienExplosiveBlockSpawnProbability": 0,
+        "useStandardDeathmatchCollapse": false,
+        "collapseInterval": 3,
+        "restartOnDeathInHardcore": false,
+        "waitForAllPlayersInOnline": false,
+        "constantFireworks": false,
+        "brosStartWithFullSpecials": true,
+        "alwaysShowBubblesInMultiplayer": false,
+        "onlyTriggersCanWinLevel": false,
+        "themeScene": "",
+        "levelDescription": "BWM:spider-bro-showcase|Spider Bro Showcase",
+        "heroSpawnMode": 4,
+        "cameraFollowMode": 0,
+        "theme": 4,
+        "forcedBro": 1000,
+        "musicType": 8,
+        "weatherType": 4,
+        "ambience": 8,
+        "width": 48,
+        "height": 26
+      },
+      "terrain": [
+        {
+          "layer": "foreground",
+          "bounds": [
+            0,
+            0,
+            47,
+            9
+          ],
+          "type": "HellRock"
+        },
+        {
+          "layer": "foreground",
+          "bounds": [
+            0,
+            7,
+            47,
+            9
+          ],
+          "type": "HellEarth"
+        },
+        {
+          "layer": "foreground",
+          "bounds": [
+            2,
+            9,
+            8,
+            9
+          ],
+          "type": "Steel"
+        },
+        {
+          "layer": "foreground",
+          "bounds": [
+            18,
+            16,
+            40,
+            17
+          ],
+          "type": "HellRock"
+        },
+        {
+          "layer": "background",
+          "bounds": [
+            0,
+            10,
+            47,
+            25
+          ],
+          "type": "BackgroundEarth"
+        },
+        {
+          "layer": "foreground",
+          "bounds": [
+            42,
+            10,
+            42,
+            17
+          ],
+          "type": "Ladder"
+        }
+      ],
+      "doodads": [
+        {
+          "x": 3,
+          "y": 10,
+          "type": 35,
+          "variation": 1
+        },
+        {
+          "x": 5,
+          "y": 10,
+          "type": 35,
+          "variation": 1
+        },
+        {
+          "x": 14,
+          "y": 10,
+          "type": 5,
+          "variation": 0
+        },
+        {
+          "x": 34,
+          "y": 10,
+          "type": 5,
+          "variation": 0
+        },
+        {
+          "x": 25,
+          "y": 10,
+          "type": 46,
+          "variation": 0
+        }
+      ],
+      "triggers": []
+    }
+  ]
+}
